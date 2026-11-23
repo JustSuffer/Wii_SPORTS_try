@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wii Sports Web - iPhone Hareket Kontrollü Spor Oyunu</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <!-- 3D WebGL Canvas Container -->
+  <div id="app-container"></div>
+
+  <!-- Top Navigation & Live Connection HUD -->
+  <header class="top-nav-bar">
+    <div class="top-nav-left">
+      <button id="btn-plaza-home" class="wii-nav-btn" style="display: none;">
+        <span>🏠</span>
+        <span>Ana Menü</span>
+      </button>
+      <button id="btn-sensitivity" class="wii-nav-btn" title="İşaretçi Hızını (DPI) Değiştir">
+        <span>⚡ DPI: Yüksek (Wii)</span>
+      </button>
+      <div id="status-pill" class="status-pill waiting">
+        <span id="status-text">🟡 iPhone Bekleniyor... (QR Kodu Tara)</span>
+      </div>
+    </div>
+
+    <div class="top-nav-right">
+      <button id="btn-show-qr" class="wii-qr-btn">
+        <span>📱 iPhone Bağla (QR Kod)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- QR Code & Setup Dialog Modal -->
+  <div id="qr-modal" class="qr-modal active">
+    <div class="qr-modal-card">
+      <button id="btn-close-qr" class="btn-close-modal">✕</button>
+      <div id="qr-modal-content">
+        <!-- Rendered dynamically by clientSync.js -->
+        <p>Bağlantı bilgileri yükleniyor...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wii Home Confirmation Modal (Ayrılmak İstediğinizden Emin Misiniz?) -->
+  <div id="wii-home-modal" class="wii-home-modal">
+    <div class="wii-home-card">
+      <div class="wii-home-header">
+        <div class="home-brand-icon">🏠</div>
+        <h2>Ana Menüye Dön</h2>
+        <p class="wii-home-subtitle">Oyundan ayrılmak istediğinizden emin misiniz?</p>
+      </div>
+
+      <div class="wii-confirm-buttons">
+        <button id="btn-home-confirm-yes" class="wii-confirm-btn danger" data-action="confirm-yes">
+          <span class="btn-confirm-icon">✓</span>
+          <span class="btn-confirm-label">Evet</span>
+        </button>
+
+        <button id="btn-home-confirm-no" class="wii-confirm-btn success" data-action="confirm-no">
+          <span class="btn-confirm-icon">✕</span>
+          <span class="btn-confirm-label">Hayır</span>
+        </button>
+      </div>
+
+      <div class="wii-home-tip">
+        💡 Kumanda imlecini butonun üzerine getirin ve <strong>(A)</strong> tuşuna basın.
+      </div>
+    </div>
+  </div>
+
+  <!-- Wii Pointer Hand Cursor -->
+  <div id="wii-cursor" class="wii-hand-cursor" style="left: 50%; top: 50%;"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
